@@ -1,0 +1,55 @@
+﻿@using CodemashApp.Models
+@model CodemashApp.ViewModel.CodemashAgendaViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="agenda">
+    <div class="table-responsive">
+        <table class="table table-condensed table-bordered">
+            <tbody>
+                <tr>
+                    <td class="agenda-date" colspan="2">
+                        My Codemash Agenda
+                    </td>
+                </tr>
+                @foreach (IGrouping<DateTime, Session> sessionTime in Model.GroupedSessions)
+                {
+                    <tr>
+                        <td class="agenda-date navbar" colspan="2">
+                            <div class="dayofmonth">@sessionTime.Key.Day</div>
+                            <div class="agenda-day-month">
+                                <div class="dayofweek">@sessionTime.Key.DayOfWeek</div>
+                                <div class="shortdate text-muted">
+                                    @sessionTime.Key.ToString("MMM"), @sessionTime.Key.Year
+                                </div>
+                            </div>
+                            <div class="agenda-time">@sessionTime.Key.ToShortTimeString()</div>
+                        </td>
+                    </tr>
+                    foreach (var session in sessionTime.ToList()
+                        .OrderBy(e => e.SessionStartTime)
+                        .ThenBy(e => e.Title))
+                    {
+                        <tr data-id="@session.Id">
+                            <td class="agenda-select"><i class="fa fa-2x fa-check-square-o"></i></td>
+                            <td class="agenda-events">
+                                <div class="agenda-event">
+                                    @session.Title
+                                    <p class="agenda-speakers">
+                                        <i class="fa fa-fw fa-bullhorn"></i>
+                                        @session.Speakers.Select(i =>
+                                            i.FirstName + " " + i.LastName).Aggregate((i, j) => i + ", " + j)
+                                    </p>
+                                    <p class="agenda-location">
+                                        <i class="fa fa-fw fa-map-marker"></i>
+                                        @session.Rooms.Aggregate((i, j) => i + ", " + j)
+                                    </p>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

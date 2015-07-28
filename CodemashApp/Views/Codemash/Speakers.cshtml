@@ -1,0 +1,13 @@
+﻿@model CodemashApp.ViewModel.CodemashSpeakerViewModel
+
+<div class="speaker-list">
+    @foreach (var speaker in Model.Speakers.OrderBy(e => e.LastName))
+    {
+        @Html.Partial("_SpeakerListItem", speaker)
+    }
+</div>
+<div class="speaker-detail"></div>
+<div class="text-center loading-status">
+    <i class="fa fa-3x fa-spin fa-spinner"></i>
+</div>
+

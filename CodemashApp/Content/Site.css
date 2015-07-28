@@ -1,0 +1,105 @@
+﻿body {
+    margin-top: 50px;
+}
+
+.navbar-default .navbar-toggle-left {
+    float: none;
+}
+
+.navmenu {
+    background-color: #222;
+}
+
+.navmenu-fixed-left {
+    border: 0;
+}
+
+.navbar-default i {
+    margin-top: 14px;
+}
+
+.navbar-default img {
+    padding: 0;
+    margin: 0;
+    margin-top: 2px;
+    margin-left: -5px;
+    max-height: 45px;
+}
+
+.navbar-default .heading {
+    font-weight: 700;
+    display: inline-block;
+    margin: 5px 0;
+    margin-left: 10px;
+    font-size: 28px;
+}
+
+.navmenu-brand,
+.navmenu-default .navmenu-brand:hover {
+    margin: 0;
+    padding: 15px 20px;
+    /*background-color: peru;*/
+    font-size: 24px;
+}
+
+.navmenu-default .navmenu-brand,
+.navmenu-default .navmenu-brand:hover {
+    color: whitesmoke;
+}
+
+.navmenu-default .navmenu-nav > li > a,
+.navbar-default .navbar-offcanvas .navmenu-nav > li > a {
+    color: lightgrey;
+}
+
+    .navmenu-default .navmenu-nav > li > a:hover,
+    .navbar-default .navbar-offcanvas .navmenu-nav > li > a:hover,
+    .navmenu-default .navmenu-nav > li > a:focus,
+    .navbar-default .navbar-offcanvas .navmenu-nav > li > a:focus {
+        color: whitesmoke;
+        background-color: dimgray;
+    }
+
+.list-group-item-text {
+    margin-top: 10px;
+}
+
+.back-button {display: inline-block; padding: 10px; }
+
+.speaker-img { width: 50px; }
+
+.loading-status {margin: 100px 0 }
+
+.session-detail, .loading-status, .speaker-detail { display: none;}
+
+.favorite { display: none }
+
+/* Agenda */
+.agenda {  }
+.agenda tbody tr[data-id] { display: none }
+
+/* Dates */
+.agenda .agenda-date { width: 170px  }
+.agenda .agenda-date .dayofmonth {
+  width: 40px;
+  font-size: 36px;
+  line-height: 36px;
+  float: left;
+  text-align: right;
+  margin-right: 10px; 
+}
+.agenda .agenda-date .shortdate {
+  font-size: 0.75em; 
+}
+
+
+/* Times */
+.agenda .agenda-day-month { float: left;}
+.agenda .agenda-time { padding-left: 20px; float: left; font-size: 2em } 
+
+
+/* Events */
+.agenda .agenda-select {vertical-align: middle }
+.agenda .agenda-event { white-space: normal; font-size: 18px; font-weight: bold; }
+.agenda .agenda-speakers,
+.agenda .agenda-location {font-size: 14px; margin: 0;font-weight: normal; }

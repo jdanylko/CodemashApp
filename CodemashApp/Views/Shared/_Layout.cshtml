@@ -1,0 +1,45 @@
+﻿@using CodemashApp.Helpers.Url
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Codemash 2.0.1.5</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <nav id="codemashMenu" class="navmenu navmenu-default navmenu-fixed-left offcanvas" role="navigation">
+        <span class="navmenu-brand">Menu</span>
+        <ul class="nav navmenu-nav">
+            <li><a href="@Url.AllSessionsUrl()"><i class="fa fa-2x fa-users fa-fw"></i> All Sessions</a></li>
+            <li><a href="@Url.AllSpeakersUrl()"><i class="fa fa-2x fa-bullhorn fa-fw"></i> All Speakers</a></li>
+            <li><a href="@Url.SessionsByDayUrl("Day1")"><i class="fa fa-2x fa-calendar fa-fw"></i> Pre-Compiler (Tuesday)</a></li>
+            <li><a href="@Url.SessionsByDayUrl("Day2")"><i class="fa fa-2x fa-calendar fa-fw"></i> Pre-Compiler (Wednesday)</a></li>
+            <li><a href="@Url.SessionsByDayUrl("Day3")"><i class="fa fa-2x fa-calendar fa-fw"></i> Conference (Thursday)</a></li>
+            <li><a href="@Url.SessionsByDayUrl("Day4")"><i class="fa fa-2x fa-calendar fa-fw"></i> Conference (Friday)</a></li>
+            <li><a href="@Url.AgendaUrl()"><i class="fa fa-2x fa-list-ol fa-fw"></i> My Agenda</a></li>
+        </ul>
+    </nav>
+
+    <div class="navbar navbar-default navbar-fixed-top">
+        <i class="fa fa-bars fa-2x pull-left" data-toggle="offcanvas" data-target="#codemashMenu" data-canvas="body"></i>
+        <img src="http://www.codemash.org/wp-content/themes/codemash/images/codemash-icon.png"
+             class="pull-left img-responsive" alt="Codemash logo" data-toggle="offcanvas"
+             data-target="#codemashMenu" data-canvas="body" />
+        <span class="heading">Codemash <span class="small">2.0.1.5</span></span>
+    </div>
+    <div class="container-fluid body-content">
+        <div class="row">
+            @RenderBody()
+        </div>
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Built for Codemash</p>
+        </footer>
+    </div>
+
+    @Scripts.RenderFormat("<script type=\"text/javascript\" src=\"{0}\" async></script>", "~/bundles/jquery")
+    @Scripts.RenderFormat("<script type=\"text/javascript\" src=\"{0}\" async></script>", "~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

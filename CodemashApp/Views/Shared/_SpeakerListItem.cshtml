@@ -1,0 +1,16 @@
+﻿@using CodemashApp.Helpers.Url
+@model CodemashApp.Models.Speaker
+
+
+<a name="@Model.Id" href="javascript:void(0);" data-target="@Url.SpeakerDetailUrl(Model.Id)" class="list-group-item speaker">
+    <div class="media">
+        <div class="media-object pull-left">
+            <img src="@Model.GravatarUrl" alt="@Model.FirstName @Model.LastName"
+                 class="speaker-img img-rounded" />
+        </div>
+        <div class="media-body">
+            <h4 class="media-heading">@Model.FirstName @Model.LastName</h4>
+            <p><span class="label label-default">@Model.Sessions.ToList().Count() Sessions</span> </p>
+        </div>
+    </div>
+</a>

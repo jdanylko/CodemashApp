@@ -1,0 +1,53 @@
+﻿@model CodemashApp.ViewModel.CodemashSessionViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingTwo">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse"
+                   data-parent="#accordion" href="#collapseTwo" aria-expanded="false" 
+                   aria-controls="collapseTwo">
+                    @Model.Title
+                </a>
+                <i class="fa fa-spin fa-spinner hide text-right"></i>
+            </h4>
+        </div>
+        <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" 
+             aria-labelledby="headingTwo">
+            <ul class="list-group">
+
+                @foreach (var session in Model.SessionItems.OrderBy(e => e.SessionStartTime))
+                {
+                    @Html.Partial("_SessionItem", session)
+                }
+            </ul>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingOne">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" 
+                   href="#collapseOne" aria-expanded="False" aria-controls="collapseOne">
+                    Schedule Items
+                </a>
+            </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" 
+             aria-labelledby="headingOne">
+            <ul class="list-group">
+
+                @foreach (var session in Model.ScheduleItems.OrderBy(e => e.SessionStartTime))
+                {
+                    @Html.Partial("_ScheduleItem", session)
+                }
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="text-center loading-status"><i class="fa fa-3x fa-spin fa-spinner"></i>
+</div>
+
+<div class="session-detail"></div>

@@ -1,0 +1,28 @@
+﻿@model CodemashApp.ViewModel.SessionDetailViewModel
+
+<a href="javascript:void(0);" class="back-button"><i class="fa fa-angle-double-left"></i> Back</a>
+<div class="list-group-item session-info" data-id="@Model.Session.Id">
+    <h4 class="list-group-item-heading">@Model.Title</h4>
+    <ul class="list-inline list-unstyled small">
+        <li>
+            <i class="fa fa-user fa-fw"></i>
+            @Model.Session.Speakers.Select(i =>
+                i.FirstName + " " + i.LastName).Aggregate((i, j) => i + ", " + j)
+        </li>
+        <li>
+            <i class="fa fa-calendar fa-fw"></i>
+            @Model.Session.StartDate
+            from
+            @Model.Session.StartTime - @Model.Session.EndTime
+        </li>
+        <li>
+            <i class="fa fa-map-marker fa-fw"></i> @Model.Session.Rooms.Aggregate((i, j) => i + ", " + j)
+        </li>
+        <li></li>
+    </ul>
+
+
+    <p class="list-group-item-text">@Html.Raw(Model.Session.Abstract.Replace("\r\n","<br/>"))</p>
+    <p>&nbsp;</p>
+    <p><button class="btn btn-default btn-sm btn-info"><i class="fa fa-heart"></i> Favorite</button></p>
+</div>

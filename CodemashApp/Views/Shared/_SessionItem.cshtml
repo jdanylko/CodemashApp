@@ -1,0 +1,29 @@
+﻿@using CodemashApp.Helpers.Url
+@model CodemashApp.Models.Session
+
+<li>
+    <a name="@Model.Id" href="javascript:void(0);" class="session list-group-item" 
+       data-target="@Url.SessionDetailUrl(Model.Id)">
+        <h4 class="list-group-item-heading">@Model.Title</h4>
+        <i class="favorite fa fa-heart fa-2x pull-right"></i>
+        <ul class="list-inline list-unstyled small">
+            <li>
+                <i class="fa fa-user fa-fw"></i>
+                @Model.Speakers.Select(i =>
+                        i.FirstName + " " + i.LastName).Aggregate((i, j) => i + ", " + j)
+            </li>
+            <li>
+                <i class="fa fa-calendar fa-fw"></i>
+                @Model.StartDate
+                from
+                @Model.StartTime - @Model.EndTime
+            </li>
+            <li>
+                <i class="fa fa-map-marker fa-fw"></i>
+                    @Model.Rooms.Aggregate((i, j) => i + ", " + j)
+            </li>
+        </ul>
+
+
+    </a>
+</li>

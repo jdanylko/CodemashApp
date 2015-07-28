@@ -1,0 +1,27 @@
+﻿@using CodemashApp.Helpers.Html
+@model CodemashApp.ViewModel.SpeakerDetailViewModel
+
+<a href="javascript:void(0);" class="back-button"><i class="fa fa-angle-double-left"></i> Back</a>
+
+<div class="well">
+    <div class="text-center">
+        <img src="@Model.Speaker.GravatarUrl" title="@Model.Speaker.FirstName @Model.Speaker.LastName" alt="@Model.Speaker.FirstName @Model.Speaker.LastName"
+             class="img-rounded" />
+        <h3>@Model.Speaker.FirstName @Model.Speaker.LastName</h3>
+        @Html.DisplaySocialIcons(Model.Speaker)
+    </div>
+    <p>
+        @Model.Speaker.Biography
+    </p>
+
+    <h4 class="list-group-item-heading">Sessions</h4>
+    <div class="list-group">
+        @foreach (var session in Model.Speaker.Sessions)
+        {
+            <div class="list-group-item">
+                <h4 class="list-group-item-heading">@session.Title</h4>
+            </div>
+        }
+    </div>
+
+</div>
